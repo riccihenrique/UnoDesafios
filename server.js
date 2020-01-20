@@ -8,10 +8,10 @@ var client/* = new pg.Client(strCon)*/;
 
 app.get('/gerar', (req, res) => {
     client = new pg.Client(strCon);
-    client.connect().then(() => console.log("Conectado")).catch(err => console.log(err));
+    client.connect().then().catch(err => console.log(err));
     client.query("select * from desafio d inner join categoria c on d.cat_cod = c.cat_cod order by RANDOM () LIMIT 1", (err, query) => {
         if(err)
-            client.end().then(() => console.log("ok")).catch(err => console.log(err));
+            client.end().then().catch(err => console.log(err));
         
         if(query) {
             query.rows.forEach(row => {
