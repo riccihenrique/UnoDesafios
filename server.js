@@ -83,10 +83,8 @@ app.get('/desafios', (req, res) => {
         if(err)
            str = "err";        
         if(query) {
-            query.rows.forEach(row => {
-                var a = getCat(row.cat_cod);
-                console.log(a);
-                str += "<span> Desafio: " + row.des_desc + " Categoria: " + row.cat_cod+ "</span><br>"; 
+            query.rows.forEach(row => {                
+                str += "<span> Desafio: " + row.des_desc + " Categoria: " + row.cat_cod + "</span><br>"; 
             })
         }
         client.end().then().catch(err => console.log(err));
