@@ -8,18 +8,17 @@ var client = new pg.Client(strCon);
 
 app.get('/gerar', (req, res) => {
     client.connect(err => console.log("Erro: " + err));
-    client.query("select * from desafio d inner join categoria c on d.cat_cod = c.cat_cod order by RANDOM () LIMIT 1;", (err, query) => {
+    client.query("select * from desafio d inner join categoria c on d.cat_cod = c.cat_cod order by RANDOM () LIMIT 1", (err, query) => {
         if(err)
             console.log(err);
         
         if(query) {
-            /*query.rows.forEach(row => {
+            query.rows.forEach(row => {
                 res.send(row.des_desc + " ou compre " + row.cat_qtd + " cartas");
-            });*/
-            console.log("opora");
+            });
         }
     });
-    //client.end();
+    client.end();
 });
 
 app.get('/', (req, res) => {    
