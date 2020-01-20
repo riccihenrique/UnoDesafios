@@ -6,7 +6,7 @@ var path = require('path');
 
 app.get('/', (req, res) => {
     
-    res.sendfile(__dirname + '\\home.html');
+    res.sendfile(__dirname + '/home.html');
 });
 
 app.get('/gerar', (req, res) => {
