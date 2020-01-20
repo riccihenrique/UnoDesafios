@@ -6,11 +6,7 @@ var path = require('path');
 
 app.get('/', (req, res) => {
     
-<<<<<<< HEAD
     res.sendfile(__dirname + '\\home.html');
-=======
-    res.render('/home');
->>>>>>> 5e49530d02b3b5887fde6bc1a945e6d475565a52
 });
 
 app.get('/gerar', (req, res) => {
