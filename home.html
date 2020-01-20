@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Desafios Uno</title>
+        <style>            
+            .container {
+                width: 100vw;
+                height: 100vh;
+                background-image: linear-gradient(to bottom right, #930003, #FED203);
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center
+            }
+
+            .box {
+                width: 500px;
+                height: 350px;
+                background: #fefefe;
+            }
+
+            body {
+                margin: 0px;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            #btGerar {
+                width: 350px;
+                height: 50px;
+                top: 75%;
+                margin-left: 15%;
+                padding-top: 5%;
+                background: #DB0929;
+                color: #FEDE00;
+                font-size: 18px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="box" style="text-align: center;">
+                <br><br><br><br><br>
+                <h1 id="desafio">Gere seus desafios aqui!!</h1>
+                <div id="btGerar" onclick="buscaDesafio()">
+                    <span>Gerar Agora</span>
+                </div> 
+            </div>
+        </div>
+
+        <script>
+            function buscaDesafio() {
+            event.preventDefault();
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", "/gerar", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("");
+            xhttp.onreadystatechange = function ()
+            {
+                if (xhttp.readyState === 4 && xhttp.status === 200)
+                {
+                    const html = document.getElementById("desafio");
+                    html.innerHTML = xhttp.responseText;
+                }
+            };
+        }
+        </script>
+    </body>
+</html>
