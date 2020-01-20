@@ -23,7 +23,7 @@ app.get('/gerar', (req, res) => {
     });
 });
 
-app.listen(3001, function () {
+app.listen(process.env.PORT || 5000, function () {
     console.log('Fala corno!');
   });
   
