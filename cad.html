@@ -98,15 +98,22 @@
             }
             function gravar() {
                 event.preventDefault();
+                const desc = document.getElementById('desc');
+                if(desc.value == "")
+                {
+                    desc.style.borderColor = "red";
+                    return;
+                }
+
                 var xhttp = new XMLHttpRequest();
                 xhttp.open("POST", "/gravar", true);
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhttp.send("desc=" + document.getElementById('desc').value + "&cat=" + document.getElementById("cat").value);
+                xhttp.send("desc=" + desc.value + "&cat=" + document.getElementById("cat").value);
                 xhttp.onreadystatechange = function () {
                     if (xhttp.readyState === 4 && xhttp.status === 200) {
                         const resp = xhttp.responseText;
                         if(resp == 'ok'){                            
-                            document.getElementById('desc').value = "";
+                            desc.value = "";
                             document.getElementById("cat").value = "1";
                             carregaDes();
                         }
@@ -125,6 +132,19 @@
                 xhttp.onreadystatechange = function () {
                     if (xhttp.readyState === 4 && xhttp.status === 200) {
                         document.getElementById('desafios').innerHTML = xhttp.responseText;
+                    }
+                };
+            }
+
+            function excluiDes(cod) {
+                event.preventDefault();
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("GET", "/excluides", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("cod=" + cod);
+                xhttp.onreadystatechange = function () {
+                    if (xhttp.readyState === 4 && xhttp.status === 200) {
+                        carregaDes();
                     }
                 };
             }

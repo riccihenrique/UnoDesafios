@@ -69,13 +69,27 @@ app.get('/desafios', (req, res) => {
            str = "err";        
         if(query) {
             query.rows.forEach(row => {                
-                str += "<div class=\"desafios\"><span class=\"des\">Desafio: " + row.des_desc + "</span><br><span class=\"cat\">Categoria: " + row.cat_cod + "</span></div>"; 
+                str += "<div class=\"desafios\"><span class=\"des\">Desafio: " + row.des_desc + "</span><br><span onclick=\"excluiDes(" + row.des_cod + "\") class=\"cat\">Categoria: " + row.cat_cod + "</span></div>"; 
             })
         }
         client.end().then().catch(err => console.log(err));
         res.send(str);
     });
-})
+});
+
+app.get("/excluides", (req, res) => {
+    client = new pg.Client(strCon);
+    client.connect().then().catch(err => console.log(err));
+    client.query("delete from desafio where cod = " + req.body.cod, (err, query) => {
+        var str = "";
+        if(err)
+           str = "err";        
+        if(query) 
+            str = "ok";
+        client.end().then().catch(err => console.log(err));
+        res.send(str);
+    });
+});
 
 app.listen(process.env.PORT || 5000);
   
