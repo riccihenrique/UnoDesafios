@@ -15,9 +15,11 @@
             }
 
             .box {
+                padding: 15px;
                 width: 50%;
                 height: 50%;
                 background: #fefefe;
+                overflow: scroll;
             }
 
             body {
@@ -36,18 +38,45 @@
                 color: #FEDE00;
                 font-size: 18px;
             }
+
+            .desafios {                
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .des {
+                font-size: 20px;
+                font-weight: 300;
+            }
+
+            .cat {
+                font-size: 17px;
+            }
+
+            input {
+                border-radius: 3px;
+                height: 30px;
+                width: 35%;
+            }
+
+            select {
+                height: 30px;
+                width: 20%;
+                border-radius: 3px;
+            }
+
         </style>
     </head>
-    <body onload="carregaCat();carregaDes()">
+    <body onload="carregaCat();carregaDes();">
         <div class="container">
             <div class="box" style="text-align: center;">
                 <form id="fo" name="fo" onsubmit="gravar()">
                     <input name="desc" id="desc" type="text" placeholder="Digite o desafio">
                     <select name="cat" id="cat">                        
                     </select>
-                    <input type="submit" value="Enviar">
+                    <input style="width: 10%;" type="submit" value="Enviar">
                 </form>
-                <div id="desafios">
+                <div style="" id="desafios">
 
                 </div>
             </div>
