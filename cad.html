@@ -17,7 +17,7 @@
             .box {
                 padding: 15px;
                 width: 50%;
-                height: 50%;
+                height: 80%;
                 background: #fefefe;
                 overflow: scroll;
             }
@@ -76,6 +76,7 @@
                     </select>
                     <input style="width: 10%;" type="submit" value="Enviar">
                 </form>
+                <hr>
                 <div style="" id="desafios">
 
                 </div>
@@ -87,8 +88,7 @@
                 event.preventDefault();
                 var xhttp = new XMLHttpRequest();
                 xhttp.open("GET", "/cat", true);
-                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhttp.send("");
+                xhttp.send();
                 xhttp.onreadystatechange = function () {
                     if (xhttp.readyState === 4 && xhttp.status === 200) {                        
                         document.getElementById("cat").innerHTML = xhttp.responseText;
@@ -99,8 +99,7 @@
             function gravar() {
                 event.preventDefault();
                 const desc = document.getElementById('desc');
-                if(desc.value == "")
-                {
+                if(desc.value == "") {
                     desc.style.borderColor = "red";
                     return;
                 }
@@ -112,7 +111,7 @@
                 xhttp.onreadystatechange = function () {
                     if (xhttp.readyState === 4 && xhttp.status === 200) {
                         const resp = xhttp.responseText;
-                        if(resp == 'ok'){                            
+                        if(resp == 'ok') {                            
                             desc.value = "";
                             document.getElementById("cat").value = "1";
                             carregaDes();
@@ -127,25 +126,23 @@
                 event.preventDefault();
                 var xhttp = new XMLHttpRequest();
                 xhttp.open("GET", "/desafios", true);
-                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xhttp.send();
                 xhttp.onreadystatechange = function () {
-                    if (xhttp.readyState === 4 && xhttp.status === 200) {
-                        document.getElementById('desafios').innerHTML = xhttp.responseText;
-                    }
+                    if (xhttp.readyState === 4 && xhttp.status === 200)
+                        document.getElementById('desafios').innerHTML = xhttp.responseText;                
                 };
             }
 
             function excluiDes(cod) {
                 event.preventDefault();
                 var xhttp = new XMLHttpRequest();
-                xhttp.open("GET", "/excluides", true);
+                xhttp.open("POST", "/excluides", true);
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xhttp.send("cod=" + cod);
                 xhttp.onreadystatechange = function () {
-                    if (xhttp.readyState === 4 && xhttp.status === 200) {
+                    if (xhttp.readyState === 4 && xhttp.status === 200)
                         carregaDes();
-                    }
+                    
                 };
             }
         </script>
