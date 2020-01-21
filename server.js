@@ -4,8 +4,8 @@ const parser = require('body-parser');
 
 const app = express();
 app.use(parser.urlencoded({extended:true}));
-const strCon = "postgres://mxyyzybl:qCNIIgJiY6qwEg0kZ-SARWv5BdpueQKU@rajje.db.elephantsql.com:5432/mxyyzybl";
-//const strCon = "postgres://pzuxtdyftdnblj:3e15c181b02e1612fa3bb3ee622e0a4a27d7af867ba3ad8504d2e4c7c8e8d1c7@ec2-34-193-42-173.compute-1.amazonaws.com:5432/d6m6vhr2q7p6mc";
+//const strCon = "postgres://mxyyzybl:qCNIIgJiY6qwEg0kZ-SARWv5BdpueQKU@rajje.db.elephantsql.com:5432/mxyyzybl";
+const strCon = "postgres://pzuxtdyftdnblj:3e15c181b02e1612fa3bb3ee622e0a4a27d7af867ba3ad8504d2e4c7c8e8d1c7@ec2-34-193-42-173.compute-1.amazonaws.com:5432/d6m6vhr2q7p6mc";
 
 var client;
 
