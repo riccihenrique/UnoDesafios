@@ -29,11 +29,11 @@ app.get('/', (req, res) => res.sendFile(__dirname + '/home.html'));
 
 app.get('/cad', (req, res) => res.sendFile(__dirname + '/cad.html'));
 
-app.get('/cat', (req, res) => {
-    var str = "";
+app.get('/cat', (req, res) => {    
     client = new pg.Client(strCon);
     client.connect().then().catch(err => console.log(err));
     client.query("select * from categoria", (err, query) => {
+        let str = "";
         if(err)
             client.end().then().catch(err => console.log(err));        
         if(query) {
@@ -64,7 +64,7 @@ app.get('/desafios', (req, res) => {
     client = new pg.Client(strCon);
     client.connect().then().catch(err => console.log(err));
     client.query("select * from desafio", (err, query) => {
-        var str = "";
+        let str = "";
         if(err)
            str = "err";        
         if(query) {
