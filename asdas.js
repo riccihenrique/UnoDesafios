@@ -4,13 +4,6 @@ a
 s
 d
 a
-s
-da
-s
-d
-a
-s
-d
-as
+sdas
 d
 asdasd
